@@ -1,5 +1,5 @@
 
-// MainFrm.cpp : CMainFrame ÀàµÄÊµÏÖ
+// MainFrm.cpp : CMainFrame ç±»çš„å®žçŽ°
 //
 
 #include "stdafx.h"
@@ -29,7 +29,7 @@ IMPLEMENT_DYNCREATE(CMainFrame, CFrameWnd)
 BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_WM_CREATE()
 
-	//²úÉúNM_XÏûÏ¢£¬×Ô¶¯µ÷ÓÃonMyChangeº¯Êý
+	//äº§ç”ŸNM_Xæ¶ˆæ¯ï¼Œè‡ªåŠ¨è°ƒç”¨onMyChangeå‡½æ•°
 	ON_MESSAGE(NM_A, OnMyChange)
 	ON_MESSAGE(NM_B, OnMyChange)
 	ON_MESSAGE(NM_C, OnMyChange)
@@ -45,17 +45,17 @@ END_MESSAGE_MAP()
 
 static UINT indicators[] =
 {
-	ID_SEPARATOR,           // ×´Ì¬ÐÐÖ¸Ê¾Æ÷
+	ID_SEPARATOR,           // çŠ¶æ€è¡ŒæŒ‡ç¤ºå™¨
 	ID_INDICATOR_CAPS,
 	ID_INDICATOR_NUM,
 	ID_INDICATOR_SCRL,
 };
 
-// CMainFrame ¹¹Ôì/Îö¹¹
+// CMainFrame æž„é€ /æžæž„
 
 CMainFrame::CMainFrame()
 {
-	// TODO: ÔÚ´ËÌí¼Ó³ÉÔ±³õÊ¼»¯´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æˆå‘˜åˆå§‹åŒ–ä»£ç 
 }
 
 CMainFrame::~CMainFrame()
@@ -69,13 +69,13 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	if (!m_wndStatusBar.Create(this))
 	{
-		TRACE0("Î´ÄÜ´´½¨×´Ì¬À¸\n");
-		return -1;      // Î´ÄÜ´´½¨
+		TRACE0("æœªèƒ½åˆ›å»ºçŠ¶æ€æ \n");
+		return -1;      // æœªèƒ½åˆ›å»º
 	}
 	m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));
 
 	SetClassLong(m_hWnd,GCL_HICON,(LONG)AfxGetApp()->LoadIconW(IDI_ICON_WIN));
-	SetTitle(TEXT("2017/12/16"));
+	SetTitle(TEXT("2018/02/16"));
 	MoveWindow(0, 0, 800, 500);
 	CenterWindow();
 
@@ -87,13 +87,13 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 {
 	if( !CFrameWnd::PreCreateWindow(cs) )
 		return FALSE;
-	// TODO: ÔÚ´Ë´¦Í¨¹ýÐÞ¸Ä
-	//  CREATESTRUCT cs À´ÐÞ¸Ä´°¿ÚÀà»òÑùÊ½
+	// TODO: åœ¨æ­¤å¤„é€šè¿‡ä¿®æ”¹
+	//  CREATESTRUCT cs æ¥ä¿®æ”¹çª—å£ç±»æˆ–æ ·å¼
 
 	return TRUE;
 }
 
-// CMainFrame Õï¶Ï
+// CMainFrame è¯Šæ–­
 
 #ifdef _DEBUG
 void CMainFrame::AssertValid() const
@@ -108,20 +108,20 @@ void CMainFrame::Dump(CDumpContext& dc) const
 #endif //_DEBUG
 
 
-// CMainFrame ÏûÏ¢´¦Àí³ÌÐò
+// CMainFrame æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 
 
 BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 {
-	// TODO: ÔÚ´ËÌí¼Ó×¨ÓÃ´úÂëºÍ/»òµ÷ÓÃ»ùÀà
+	// TODO: åœ¨æ­¤æ·»åŠ ä¸“ç”¨ä»£ç å’Œ/æˆ–è°ƒç”¨åŸºç±»
 
 	//return CFrameWnd::OnCreateClient(lpcs, pContext);
 
-	//×Ô¼º²ð·Ö
+	//è‡ªå·±æ‹†åˆ†
 	m_spliter.CreateStatic(this, 1, 2);
 
-	//×ó²àºÍÓÒ²àÏÔÊ¾µÄÄÚÈÝ
+	//å·¦ä¾§å’Œå³ä¾§æ˜¾ç¤ºçš„å†…å®¹
 	m_spliter.CreateView(0, 0, RUNTIME_CLASS(CSelectView), CSize(200, 500), pContext);
 	m_spliter.CreateView(0, 1, RUNTIME_CLASS(CDisplaView), CSize(600, 500), pContext);
 
@@ -131,7 +131,7 @@ BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
 LRESULT CMainFrame::OnMyChange(WPARAM wParam, LPARAM lParam)
 {
 	CCreateContext context;
-	//½çÃæ¹ÒÔØ
+	//ç•Œé¢æŒ‚è½½
 	if (wParam == NM_A)
 	{
 		context.m_pNewViewClass = RUNTIME_CLASS(CUserDlg);
@@ -198,27 +198,27 @@ LRESULT CMainFrame::OnMyChange(WPARAM wParam, LPARAM lParam)
 
 void CMainFrame::On32771()
 {
-	// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
 	exit(0);
 }
 
 
 void CMainFrame::On32772()
 {
-	// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
 	::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), NM_A, (WPARAM)NM_A, (LPARAM)0);
 }
 
 
 void CMainFrame::On32773()
 {
-	// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
 	::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), NM_A, (WPARAM)NM_B, (LPARAM)0);
 }
 
 
 void CMainFrame::On32775()
 {
-	// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌÐò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
 	::PostMessage(AfxGetMainWnd()->GetSafeHwnd(), NM_A, (WPARAM)NM_D, (LPARAM)0);
 }
